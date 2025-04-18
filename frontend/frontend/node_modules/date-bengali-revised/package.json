@@ -1,0 +1,76 @@
+{
+  "name": "date-bengali-revised",
+  "version": "2.0.2",
+  "description": "Revised Bengali Calendar",
+  "keywords": [
+    "bengali",
+    "calendar",
+    "conversion",
+    "gregorian",
+    "revised"
+  ],
+  "homepage": "https://github.com/commenthol/date-bengali-revised",
+  "bugs": {
+    "url": "https://github.com/commenthol/date-bengali-revised/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commenthol/date-bengali-revised.git"
+  },
+  "license": "MIT",
+  "author": "commenthol <commenthol@gmail.com>",
+  "maintainers": [
+    "commenthol <commenthol@gmail.com>"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.cjs",
+  "module": "./src/index.js",
+  "types": "./types",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "all": "npm-run-all clean lint build test",
+    "build": "rollup -c",
+    "ci": "npm test",
+    "clean": "rimraf lib coverage .nyc_output",
+    "clean:all": "npm-run-all clean clean:node_modules",
+    "clean:node_modules": "rimraf node_modules",
+    "coverage": "c8 -r text -r html npm run test:ci",
+    "lint": "eslint --ext .js .",
+    "prepublishOnly": "npm run all",
+    "readme": "markedpp --githubid -i README.md -o README.md",
+    "test": "npm-run-all test:ci test:ts",
+    "test:ci": "mocha",
+    "test:ts": "dtslint types"
+  },
+  "mocha": {
+    "checkLeaks": true,
+    "colors": true
+  },
+  "devDependencies": {
+    "c8": "^7.11.3",
+    "dtslint": "^4.2.1",
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "mocha": "^10.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.74.1",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

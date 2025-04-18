@@ -1,0 +1,76 @@
+{
+  "name": "date-easter",
+  "version": "1.0.3",
+  "description": "Calculates Easter for a given year",
+  "keywords": [
+    "easter"
+  ],
+  "homepage": "https://github.com/commenthol/date-easter#readme",
+  "bugs": {
+    "url": "https://github.com/commenthol/date-easter/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commenthol/date-easter.git"
+  },
+  "license": "MIT",
+  "author": "commenthol <commenthol@gmail.com>",
+  "maintainers": [
+    "commenthol <commenthol@gmail.com>"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./lib/index.cjs",
+  "module": "./src/index.js",
+  "types": "./types",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "src",
+    "lib",
+    "types/*.d.ts"
+  ],
+  "scripts": {
+    "all": "npm-run-all clean lint build test",
+    "build": "rollup -c",
+    "ci": "npm test",
+    "clean": "rimraf lib es coverage .nyc_output",
+    "clean:all": "npm-run-all clean clean:node_modules",
+    "clean:node_modules": "rimraf node_modules",
+    "coverage": "c8 -r text -r html npm run test:ci",
+    "lint": "eslint --ext .js .",
+    "prepublishOnly": "npm run all",
+    "readme": "markedpp --githubid -i README.md -o README.md",
+    "test": "npm-run-all test:ci",
+    "test:ci": "mocha"
+  },
+  "mocha": {
+    "checkLeaks": true,
+    "colors": true
+  },
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "mocha": "^10.3.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.13.0",
+    "typescript": "^5.4.3"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
